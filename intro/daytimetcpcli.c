@@ -1,3 +1,5 @@
+#include "unp.h"
+#include "apueerror.h"
 int main(int argc, char** argv)
 {
     int sockfd, n;
@@ -22,7 +24,7 @@ int main(int argc, char** argv)
 		
 	while ((n = read(sockfd, recvline, MAXLINE)) > 0)
 	{
-		recvline[0] = 0;
+		recvline[n] = 0;
 		if (fputs(recvline, stdout) == EOF)
 			err_sys("fputs error");
 	}
